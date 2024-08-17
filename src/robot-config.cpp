@@ -12,8 +12,8 @@ motor leftDriveB = motor(PORT20, ratio6_1, false);
 motor leftDriveC = motor(PORT5, ratio6_1, true);
 
 motor rightDriveA = motor(PORT10, ratio6_1, false);
-motor rightDriveB = motor(PORT6, ratio6_1, true); 
-motor rightDriveC = motor(PORT4, ratio6_1, false);
+motor rightDriveB = motor(PORT6, ratio6_1, true); //works
+motor rightDriveC = motor(PORT8, ratio6_1, false);  //8
 
 inertial DrivetrainInertial = inertial(PORT8);
 
