@@ -127,3 +127,82 @@ void holonomic_odom_test(){
   chassis.holonomic_drive_to_pose(0, 18, 270);
   chassis.holonomic_drive_to_pose(0, 0, 0);
 }
+
+void firstStake() {
+  chassis.set_coordinates(-150, 0, 0);
+  chassis.turn_to_point(-171, 45);
+  chassis.drive_to_point(-120, -62);
+  Claw.set(true);
+  Intake.spin(forward, 100, pct);
+  chassis.drive_to_point(-62, -62);
+  chassis.turn_to_point(-60, -120);
+  chassis.drive_to_point(-60, -120);
+  chassis.turn_to_point(-120, -120);
+  chassis.drive_to_point(-120, -120);
+
+  chassis.drive_to_point(-150, -120);
+  chassis.turn_to_point(-120, -150);
+  chassis.drive_to_point(-120, -150);
+  chassis.turn_to_point(0, -150);
+  chassis.drive_to_point(0, -150);
+  chassis.turn_to_point(-150, -150);
+  chassis.drive_to_point(-150, -150);
+  chassis.turn_to_point(-120, -120);
+  Claw.set(false);
+}
+
+
+void secondStake() {
+  chassis.drive_to_point(-120, -61);
+  chassis.turn_to_point(-120, -120);
+  chassis.drive_to_point(-120, 61);
+  Claw.set(true);
+  Intake.spin(forward, 100, pct);
+  chassis.turn_to_point(-60, 60);
+  chassis.drive_to_point(-60, 60);
+  chassis.turn_to_point(-60, 120);
+  chassis.drive_to_point(-60, 120);
+  chassis.turn_to_point(-120, 120);
+  chassis.drive_to_point(-120, 120);
+  chassis.drive_to_point(-150, 120);
+  chassis.turn_to_point(-120, 150);
+  chassis.drive_to_point(-120, 150);
+  chassis.turn_to_point(0, 150);
+  chassis.drive_to_point(0, 150);
+  chassis.turn_to_point(-155, 155);
+  chassis.drive_to_point(-155, 155);
+  chassis.turn_to_point(-120, -120);
+  Claw.set(false);
+}
+
+void thirdStake() {
+  chassis.turn_to_point(116, 75);
+  chassis.drive_to_point(116, 75);
+  chassis.turn_to_point(118, 100);
+  chassis.drive_to_point(120, 0);
+  Claw.set(true);
+  chassis.turn_to_point(60, -60);
+  chassis.drive_to_point(60, -60);
+  chassis.turn_to_point(60, -120);
+  chassis.drive_to_point(60, -120);
+  chassis.turn_to_point(130, -120);
+  chassis.drive_to_point(130, -120);
+  chassis.turn_to_point(113, -160);
+  chassis.drive_to_point(113, -160);
+  chassis.turn_to_point(82, -160);
+  chassis.drive_to_point(160, 166);
+  Claw.set(false);
+}
+
+void hang() {
+  chassis.turn_to_point(30, -30);
+  chassis.drive_to_point(30, -30); 
+}
+
+void autonomous_one_minute() {
+  firstStake();
+  secondStake();
+  thirdStake();
+  hang();
+}
+
