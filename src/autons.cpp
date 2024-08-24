@@ -30,7 +30,7 @@ void default_constants(){
 void odom_constants(){
   default_constants();
   chassis.heading_max_voltage = 10;
-  chassis.drive_max_voltage = 8;
+  chassis.drive_max_voltage = 12;
   chassis.drive_settle_error = 3;
   chassis.boomerang_lead = .5;
   chassis.drive_min_voltage = 0;
@@ -104,14 +104,21 @@ void odom_test(){
  * Should end in the same place it began, but the second movement
  * will be curved while the first is straight.
  */
+// digital_out Claw = digital_out(Brain.ThreeWirePort.A);
 
 void tank_odom_test(){
-  odom_constants();
-  chassis.set_coordinates(0, 0, 0);
-  chassis.turn_to_point(24, 24);
-  chassis.drive_to_point(24,24);
-  chassis.drive_to_point(0,0);
-  chassis.turn_to_angle(0);
+  chassis.drive_distance(10);
+  // Brain.Screen.print("stuff 2");
+  // odom_constants();
+  // Brain.Screen.print("stuff 3");
+  // chassis.set_coordinates(0, 0, 0);
+  // chassis.drive_distance(10);
+  // Brain.Screen.print("stuff 4");
+  // chassis.turn_to_point(0,-10);
+  // chassis.turn_to_point(24, 24);
+  // chassis.drive_to_point(24,24);
+  // chassis.drive_to_point(0,0);
+  // chassis.turn_to_angle(0);
 }
 
 /**
@@ -127,6 +134,42 @@ void holonomic_odom_test(){
   chassis.holonomic_drive_to_pose(0, 18, 270);
   chassis.holonomic_drive_to_pose(0, 0, 0);
 }
+
+void auton_red_left() {
+  // chassis.set_coordinates(-50, 23, 90);
+  // Claw.set(true); //change later after sayansh tests it
+  // chassis.drive_to_point(-23.5, 23.5);
+  // //Get the mobile goal
+  // Claw.set(false);
+  // chasis.turnFor(-90, degrees);
+  // chassis.drive_to_point(-23.776, 40.5);
+  // chassis.turnFor(180, degrees);
+  // chassis.drive_to_point(-23.8, 32.4);
+  // chassis.turnFor(-120, degrees);
+  // chassis.drive_to_point(-11.6, 38.7);
+  // chassis.turnFor(150, degrees);
+  // chassis.drive_to_point(-10.7, 12.5);
+}
+
+void auton_blue_right() {
+  chassis.set_coordinates(-50, 23, 90);
+  Claw.set(true); //change later after sayansh tests it
+  chassis.drive_to_point(-23.5, 23.5);
+  //Get the mobile goal
+  // Claw.set(false);
+  // chasis.turnFor(-90, degrees);
+  // chassis.drive_to_point(-23.776, 40.5);
+  // chassis.turnFor(180, degrees);
+  // chassis.drive_to_point(-23.8, 32.4);
+  // chassis.turnFor(-120, degrees);
+  // chassis.drive_to_point(-11.6, 38.7);
+  // chassis.turnFor(150, degrees);
+  // chassis.drive_to_point(-10.7, 12.5);
+}
+
+
+//skills functions
+
 
 void firstStake() {
   chassis.set_coordinates(-150, 0, 0);

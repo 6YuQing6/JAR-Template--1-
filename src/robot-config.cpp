@@ -5,8 +5,11 @@ using signature = vision::signature;
 using code = vision::code;
 
 
+brain Brain;
 
 // A global instance of brain used for printing to the V5 Brain screen.
+Brain.Screen.print("stuff");
+
 motor leftDriveA = motor(PORT9, ratio6_1, true);
 motor leftDriveB = motor(PORT20, ratio6_1, false); 
 motor leftDriveC = motor(PORT5, ratio6_1, true);
@@ -18,7 +21,6 @@ motor rightDriveC = motor(PORT8, ratio6_1, false);  //8
 inertial DrivetrainInertial = inertial(PORT8);
 
 controller Controller1 = controller(primary);
-brain Brain;
 
 motor Intake = motor(PORT1, ratio6_1, false);
 motor Arm = motor(PORT2, ratio6_1, true); 

@@ -7,6 +7,7 @@ using namespace vex;
 competition Competition;
 
 // define your global instances of motors and other devices here
+// digital_out Claw = digital_out(Brain.ThreeWirePort.A);
 
 Drive chassis(
 
@@ -35,7 +36,7 @@ LeftDriveSmart,
 RightDriveSmart,
 
 //Specify the PORT NUMBER of your inertial sensor, in PORT format (i.e. "PORT1", not simply "1"):
-PORT4,
+PORT3,
 
 //Input your wheel diameter. (4" omnis are actually closer to 4.125"):
 3.25,
@@ -43,7 +44,7 @@ PORT4,
 //External ratio, must be in decimal, in the format of input teeth/output teeth.
 //If your motor has an 84-tooth gear and your wheel has a 60-tooth gear, this value will be 1.4.
 //If the motor drives the wheel directly, this value is 1:
-1.6666666666666666666666666666667,
+1.3333334,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
@@ -69,7 +70,7 @@ PORT3,     -PORT4,
 //If you are using position tracking, this is the Forward Tracker port (the tracker which runs parallel to the direction of the chassis).
 //If this is a rotation sensor, enter it in "PORT1" format, inputting the port below.
 //If this is an encoder, enter the port as an integer. Triport A will be a "1", Triport B will be a "2", etc.
-PORT12, //Will do later
+PORT17, //Will do later
 
 //Input the Forward Tracker diameter (reverse it to make the direction switch):
 2.75,
@@ -77,16 +78,16 @@ PORT12, //Will do later
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
 //For a zero tracker tank drive with odom, put the positive distance from the center of the robot to the right side of the drive.
 //This distance is in inches:
-0,
+-0.125,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
-PORT11,
+PORT4,
 
 //Sideways tracker diameter (reverse to make the direction switch):
 2,
 
 //Sideways tracker center distance (positive distance is behind the center of the robot, negative is in front):
-1.5
+3.125
 
 );
 
@@ -101,7 +102,7 @@ PORT11,
 /*---------------------------------------------------------------------------*/
 
 void pre_auton(void) {
-
+  default_constants();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -117,8 +118,9 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  odom_test();
+  // odom_test();
   // wait(1000, msec);
+  //Brain.Screen.print("stuff 1");
   tank_odom_test();
   // ..........................................................................
   // Insert autonomous user code here.
@@ -137,7 +139,6 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  while (1) {
     bool DrivetrainLNeedsToBeStopped_Controller1 = true;
   bool DrivetrainRNeedsToBeStopped_Controller1 = true;
 
@@ -238,21 +239,10 @@ void usercontrol(void) {
     } else {
       Arm.stop(brake); // change to hold or coast or brake
     }
-
-  }
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
-
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
-
     wait(20, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
+
   }
-}
+  }
 
 //
 // Main will set up the competition functions and callbacks.
